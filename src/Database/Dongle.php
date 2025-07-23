@@ -154,7 +154,7 @@ class Dongle
 
         // Requires https://groupconcat.codeplex.com/
         if ($this->driver === 'sqlsrv') {
-            $result = str_ireplace('group_concat(', 'dbo.GROUP_CONCAT_D(', $result);
+            $result = str_ireplace('group_concat(', 'dbo.STRING_AGG(', $result);
         }
 
         return $result;
