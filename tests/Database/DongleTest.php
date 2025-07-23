@@ -70,13 +70,13 @@ class DongleTest extends TestCase
         $dongle = new Dongle('sqlsrv');
 
         $result = $dongle->parseGroupConcat("group_concat(first_name separator ', ')");
-        $this->assertEquals("dbo.GROUP_CONCAT_D(first_name, ', ')", $result);
+        $this->assertEquals("STRING_AGG(first_name, ', ')", $result);
 
         $result = $dongle->parseGroupConcat("group_concat(sometable.first_name SEPARATOR ', ')");
-        $this->assertEquals("dbo.GROUP_CONCAT_D(sometable.first_name, ', ')", $result);
+        $this->assertEquals("STRING_AGG(sometable.first_name, ', ')", $result);
 
         $result = $dongle->parseGroupConcat("group_concat(id separator ')')");
-        $this->assertEquals("dbo.GROUP_CONCAT_D(id, ')')", $result);
+        $this->assertEquals("STRING_AGG(id, ')')", $result);
     }
 
     public function testSqliteParseBooleanExpression()
